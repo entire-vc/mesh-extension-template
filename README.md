@@ -1,7 +1,7 @@
 # Mesh extension template
 
 An external Mesh extension starter derived from
-[mesh-ext-hello](https://git.entire.host/entire-vc/mesh-ext-hello), licensed under MIT.
+mesh-ext-hello, licensed under MIT.
 It implements signed installation/events, JWT-authenticated UI, a health endpoint,
 and the `sidebar.item` and `task.panel` slots.
 
