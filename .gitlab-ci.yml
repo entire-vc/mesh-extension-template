@@ -1,0 +1,20 @@
+stages: [validate]
+
+validate:
+  stage: validate
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
+  image:
+    name: aquasec/trivy:0.70.0@sha256:be1190afcb28352bfddc4ddeb71470835d16462af68d310f9f4bca710961a41e
+    entrypoint: [""]
+  tags: [docker]
+  script:
+    - apk add --no-cache python3 py3-pip
+    - python3 -m venv /tmp/publisher-tools
+    - /tmp/publisher-tools/bin/pip install https://spark.entire.vc/api/v1/mesh-extensions/docs/mesh-ext-0.1.0.tar.gz
+    - /tmp/publisher-tools/bin/pip install -r requirements-dev.txt
+    - /tmp/publisher-tools/bin/mesh-ext validate .
+    - /tmp/publisher-tools/bin/python -m pytest tests -q
