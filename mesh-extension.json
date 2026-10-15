@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "id": "example",
+  "name": "Example",
+  "version": "0.1.0",
+  "kind": "plugin",
+  "runtime": "external",
+  "mesh_api": ">=1 <2",
+  "publisher": "Your organization",
+  "description": "Example external extension with signed events and authenticated UI",
+  "category": "development",
+  "tags": [
+    "example",
+    "template"
+  ],
+  "icon": "icon.svg",
+  "license": "MIT",
+  "repository": "https://git.entire.host/entire-vc/mesh-extension-template",
+  "levels": {
+    "instance": false,
+    "workspace": true,
+    "project": false
+  },
+  "settings": {
+    "workspace": {
+      "type": "object",
+      "properties": {
+        "hello_url": {
+          "type": "string",
+          "format": "uri",
+          "title": "Service URL"
+        }
+      },
+      "required": [
+        "hello_url"
+      ]
+    }
+  },
+  "capabilities": {
+    "api": [
+      "tasks:read"
+    ],
+    "events": [
+      "task.updated"
+    ],
+    "network": {
+      "allowed_domains": [
+        "{settings.hello_url}"
+      ],
+      "reasoning": "Mesh calls the service at the configured URL"
+    },
+    "ui": [
+      "sidebar.item",
+      "task.panel"
+    ]
+  },
+  "external": {
+    "base_url_setting": "hello_url",
+    "health_path": "/healthz",
+    "install_path": "/mesh/install",
+    "events_path": "/mesh/events",
+    "ui": {
+      "sidebar.item": {
+        "path": "/mesh/ui/hello",
+        "title": "Hello",
+        "icon": "hand"
+      },
+      "task.panel": {
+        "path": "/mesh/ui/task",
+        "title": "Hello"
+      }
+    }
+  }
+}
