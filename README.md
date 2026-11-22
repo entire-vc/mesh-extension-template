@@ -1,7 +1,7 @@
 # Mesh extension template
 
 An external Mesh extension starter derived from
-[mesh-ext-hello](https://git.entire.host/entire-vc/mesh-ext-hello), licensed under MIT.
+mesh-ext-hello, licensed under Apache-2.0.
 It implements signed installation/events, JWT-authenticated UI, a health endpoint,
 and the `sidebar.item` and `task.panel` slots.
 
@@ -75,3 +75,9 @@ installing `mesh-ext` in your environment:
 .venv/bin/mesh-ext validate .
 .venv/bin/python -m pytest tests -q
 ```
+
+## License
+
+[Apache-2.0](LICENSE). Copyright 2026 Entire VC.
+
+relicensed from MIT to Apache-2.0 on 2026-11-21
