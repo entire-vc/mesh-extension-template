@@ -14,8 +14,8 @@
     "template"
   ],
   "icon": "icon.svg",
-  "license": "MIT",
-  "repository": "https://git.entire.host/entire-vc/mesh-extension-template",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/entire-vc/mesh-extension-template",
   "levels": {
     "instance": false,
     "workspace": true,
